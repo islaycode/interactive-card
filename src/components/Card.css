@@ -1,0 +1,51 @@
+.cardFront {
+    border-radius: 5px;
+}
+
+.cardBack {
+    position: relative;
+    margin-top: 20px;
+    margin-left: 70px;
+    border-radius: 5px;
+}
+
+.logo {
+    background: url("../assets/card-logo.svg");
+}
+
+.cardLogo {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+}
+
+.cardNumber {
+    color: #ffff;
+    position: absolute;
+    left: 30px;
+    top: 25%;
+}
+
+.holderName {
+    color: var(--Lightgrayishviolet);
+    position: absolute;
+    text-transform: uppercase;
+    left: 30px;
+    top: 40%;
+}
+
+.expiry {
+    color: var(--Lightgrayishviolet);
+    position: absolute;
+    text-transform: uppercase;
+    left: 70%;
+    top: 40%;
+}
+
+.cvv {
+    color: var(--Lightgrayishviolet);
+    position: absolute;
+    text-transform: uppercase;
+    left: 80%;
+    top: 43%;
+}

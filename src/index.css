@@ -9,17 +9,83 @@
 }
 
 body {
-    height: 100vh;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Space Grotesk";
     font-size: 18px;
     font-weight: 500;
-    background: linear-gradient( to right, var(--active) 0%, var(--active) 50%, var(--White) 50%, var(--White) 100%);
+    background: url('./assets/bg-main-desktop.png') no-repeat left top, linear-gradient(hsl(0, 0%, 100%), hsl(0, 0%, 100%));
+    /* background: linear-gradient( to right, var(--active) 0%, var(--active) 30%, var(--White) 30%, var(--White) 100%); */
 }
 
-input[type="text"] {
+.container {
+    margin-top: 200px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.cardSection {
+    position: absolute;
+    top: 100px;
+    left: 20%;
+}
+
+.formSection {
+    position: absolute;
+    left: 60%;
+}
+
+.split {
+    height: 100%;
+    width: 60%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.left {
+    left: 0;
+    background-color: var(--active);
+}
+
+.right {
+    right: 0;
+    background-color: var(--White);
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.d-n {
+    display: none;
+}
+
+.danger {
+    color: red;
+    font-size: 12px;
+}
+
+.d-flex {
+    display: flex;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+select {
+    height: 30px;
+    width: 90px;
     border-radius: 5px;
     box-sizing: border-box;
     border: 1px solid #ccc;
@@ -28,6 +94,67 @@ input[type="text"] {
     outline: none;
 }
 
+.ml-20 {
+    margin-left: 20px;
+}
+
+input[type="number"] {
+    width: 90px;
+}
+
+input[type="number"]:focus {
+    border: 1px solid var(--active);
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.ml-30 {
+    margin-left: 30px;
+}
+
+input {
+    height: 30px;
+    width: 320px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    padding-left: 5px;
+}
+
+.m-0 {
+    margin-bottom: 0 !important;
+}
+
 input[type="text"]:focus {
     border: 1px solid var(--active);
+}
+
+input::placeholder {
+    padding-left: 10px;
+}
+
+button {
+    background: var(--Verydarkviolet);
+    color: white;
+    border-radius: 5px;
+    width: 320px;
+    padding: 10px;
+    font-family: "Space Grotesk";
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 30px;
+}
+
+button:hover {
+    cursor: pointer;
 }
