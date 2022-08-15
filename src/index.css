@@ -98,6 +98,10 @@ select {
     margin-left: 20px;
 }
 
+.w-90 {
+    width: 90px;
+}
+
 input[type="number"] {
     width: 90px;
 }

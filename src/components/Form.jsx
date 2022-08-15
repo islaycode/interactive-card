@@ -1,14 +1,7 @@
 import { useState } from "react";
 import Button from "./Button";
 
-const Form = ({ date }) => {
-  const [state, setState] = useState({
-    holderName: "",
-    cardNumber: "",
-    cvv: "",
-    mm: "",
-    yy: "",
-  });
+const Form = ({ date, holderName, cardNumber, yy, mm, cvv, setState }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -26,7 +19,7 @@ const Form = ({ date }) => {
   });
 
   const handleCardDisplay = () => {
-    const rawText = [...state.cardNumber.split(" ").join("")]; // Remove old space
+    const rawText = [...cardNumber.split(" ").join("")]; // Remove old space
     const creditCard = []; // Create card as array
     rawText.forEach((t, i) => {
       if (i % 4 === 0) creditCard.push(" "); // Add space
@@ -37,23 +30,21 @@ const Form = ({ date }) => {
   const handleSubmit = () => {
     console.log(
       "num",
-      state.cardNumber,
+      cardNumber,
       "name",
-      state.holderName,
+      holderName,
       "mm",
-      state.mm,
+      mm,
       "yy",
-      state.yy,
+      yy,
       "cvv",
-      state.cvv
+      cvv
     );
-    if (state.holderName === "")
-      setErrors((errors) => ({ ...errors, name: true }));
-    if (state.cardNumber === "")
-      setErrors((errors) => ({ ...errors, number: true }));
-    if (state.mm === "") setErrors((errors) => ({ ...errors, mm: true }));
-    if (state.yy === "") setErrors((errors) => ({ ...errors, yy: true }));
-    if (state.cvv === "") setErrors((errors) => ({ ...errors, cvv: true }));
+    if (holderName === "") setErrors((errors) => ({ ...errors, name: true }));
+    if (cardNumber === "") setErrors((errors) => ({ ...errors, number: true }));
+    if (mm === "") setErrors((errors) => ({ ...errors, mm: true }));
+    if (yy === "") setErrors((errors) => ({ ...errors, yy: true }));
+    if (cvv === "") setErrors((errors) => ({ ...errors, cvv: true }));
 
     console.log("e", errors);
   };
@@ -62,14 +53,16 @@ const Form = ({ date }) => {
       <form>
         <label htmlFor="name">CARD HOLDER NAME</label>
         <input
-          value={state.holderName}
+          value={holderName}
           onChange={handleChange}
           type="text"
           placeholder="e.g. Jane Appleseed"
           name="holderName"
         />
         {errors.name ? <span className="danger">Can't be blank</span> : null}
-        <label htmlFor="card-number" className="mt-10">CARD NUMBER</label>
+        <label htmlFor="card-number" className="mt-10">
+          CARD NUMBER
+        </label>
         <input
           onChange={handleChange}
           value={handleCardDisplay()}
@@ -86,7 +79,7 @@ const Form = ({ date }) => {
             <select
               name="mm"
               placeholder="MM"
-              value={state.mm}
+              value={mm}
               onChange={handleChange}
             >
               <option className="d-n" selected>
@@ -105,7 +98,7 @@ const Form = ({ date }) => {
             {errors.mm ? <div className="danger">Can't be blank</div> : null}
           </div>
           <div className="ml-30">
-            <select name="yy" value={state.yy} onChange={handleChange}>
+            <select name="yy" value={yy} onChange={handleChange}>
               <option className="d-n" selected>
                 YY
               </option>
@@ -122,11 +115,13 @@ const Form = ({ date }) => {
           </div>
           <div className="ml-20">
             <input
-              className="m-0"
-              type="number"
+              className="m-0 w-90"
+              type="tel"
               name="cvv"
               placeholder="e.g. 123"
-              value={state.cvv}
+              value={cvv}
+              maxLength="3"
+              pattern="\d*"
               onChange={handleChange}
             />
             {errors.cvv ? <div className="danger">Can't be blank</div> : null}
